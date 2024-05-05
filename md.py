@@ -29,7 +29,8 @@ def stat(df):
 
 
 def trans(keyvar):
-    df = pd.read_csv('RET.csv')
+    url='https://raw.githubusercontent.com/wfhung2024/data/main/RET.csv'
+    df = pd.read_csv(url)
     keydf = df.pivot(index='time',columns='firm',values=keyvar)
     keydf.index = pd.to_datetime((keydf.index*100+1).astype(str))
     keydf.index = pd.date_range(keydf.index[0],periods=len(keydf),freq='M')
@@ -37,5 +38,3 @@ def trans(keyvar):
 
 def sr(x):
     return x.mean()*12**0.5/x.std()
-
-
