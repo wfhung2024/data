@@ -37,4 +37,12 @@ def trans(keyvar):
     return keydf
 
 def sr(x):
-    return x.mean()*12**0.5/x.std()
+  u = x.mean()
+  s = x.std()
+  sr = (u/s)*250**0.5
+  return round(sr,2)
+
+
+
+
+
